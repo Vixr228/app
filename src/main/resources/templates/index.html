@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/book.js"></script>
+    <script src="/js/employee.js"></script>
+    <script src="/js/organization.js"></script>
+    <script src="/js/department.js"></script>
+    <script src="/js/task.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+
+
+
+</head>
+<body>
+
+<!-- Employee form -->
+  <div id="employee-form">
+      <form>
+          <h2>Добавить</h2>
+          <label>Name:</label>
+          <input type="text" name="name" value="">
+          <label>Surname:</label>
+          <input type="text" name="surname" value="">
+          <label>Patronymic:</label>
+          <input type="text" name="patronymic" value="">
+          <label>Position:</label>
+          <input type="text" name="position" value="">
+          <label>Organization</label>
+          <input type="text" name="organization" value="" list="organizations">
+              <datalist id="organizations">
+                  <option th:each="organization : ${organizations}" th:text="${organization.name}" th:value="${organization.id}"></option>
+              </datalist>
+          <hr>
+          <button id="save-employee">Save</button>
+      </form>
+  </div>
+<!-- Employee -->
+  <button id="show-add-employee-form">Add employee</button>
+  <div id="employee-list">
+
+  </div>
+
+
+    <!-- Organization form -->
+    <div id="organization-form">
+        <form>
+            <h2>Добавить</h2>
+            <label>Name:</label>
+            <input type="text" name="name" value="">
+            <label>Actual Address:</label>
+            <input type="text" name="actualAddress" value="">
+            <label>Legal Address:</label>
+            <input type="text" name="legalAddress" value="">
+            <label>Director:</label>
+            <input type="text" name="director" value="" list="directors">
+            <datalist id="directors">
+                <option th:each="employee : ${employees}" th:text="${employee.name}" th:value="${employee.id}"></option>
+            </datalist>
+            <hr>
+            <button id="save-organization">Save</button>
+        </form>
+    </div>
+    <button id="show-add-organization-form">Add organization</button>
+    <div id="organization-list">
+
+    </div>
+
+
+<!-- department form -->
+<div id="department-form">
+    <form>
+        <h2>Добавить</h2>
+        <label>Name:</label>
+        <input type="text" name="name" value="">
+        <label>contact Details:</label>
+        <input type="text" name="contactDetails" value="">
+        <label>Director:</label>
+        <input type="text" name="director" value="" list="departmentDirectors">
+        <datalist id="departmentDirectors">
+            <option th:each="employee : ${employees}" th:text="${employee.name}" th:value="${employee.id}"></option>
+        </datalist>
+        <label>Organization</label>
+        <input type="text" name="organization" value="" list="departmentOrganizations">
+        <datalist id="departmentOrganizations">
+            <option th:each="organization : ${organizations}" th:text="${organization.name}" th:value="${organization.id}"></option>
+        </datalist>
+        <hr>
+        <button id="save-department">Save</button>
+    </form>
+</div>
+<button id="show-add-department-form">Add department</button>
+<div id="department-list">
+
+</div>
+
+
+<!-- department form -->
+<div id="task-form">
+    <form>
+        <h2>Добавить</h2>
+        <label>Topic:</label>
+        <input type="text" name="topic" value="">
+        <label>author:</label>
+        <input type="text" name="author" value="" list="author">
+        <datalist id="author">
+            <option th:each="employee : ${employees}" th:text="${employee.name}" th:value="${employee.id}"></option>
+        </datalist>
+        <label>Days amount:</label>
+        <input type="text" name="daysAmount" value="">
+        <label>successDescription:</label>
+        <input type="text" name="successDescription" value="">
+        <label>isComplete</label>
+        <input type="checkbox" name="isComplete" value="false">
+        <label>description:</label>
+        <input type="text" name="description" value="">
+
+        <hr>
+        <button id="save-task">Save</button>
+    </form>
+</div>
+<button id="show-add-task-form">Add task</button>
+<div id="task-list">
+
+</div>
+
+
+<input id="delete-employee-input" type="number" name="id" value="">
+<button id="delete-employee">Delete employee</button>
+<br>
+<br>
+<input id="delete-organization-input" type="number" name="id" value="">
+<button id="delete-organization">Delete organization</button>
+<br>
+<br>
+
+<input id="delete-department-input" type="number" name="id" value="">
+<button id="delete-department">Delete department</button>
+<br>
+<br>
+
+<input id="delete-task-input" type="number" name="id" value="">
+<button id="delete-task">Delete task</button>
+
+</body>
+</html>
